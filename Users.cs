@@ -25,8 +25,8 @@ namespace УП_01._01_Gusakov323
             this.UnfreezeRequest = new HashSet<UnfreezeRequest>();
         }
     
-        public int ID { get; set; }
-        public int RoleID { get; set; }
+        public int UserId { get; set; }
+        public int RoleId { get; set; }
         public string Login { get; set; }
         public string PasswordHash { get; set; }
         public string Email { get; set; }

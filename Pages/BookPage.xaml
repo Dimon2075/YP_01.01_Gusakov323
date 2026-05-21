@@ -8,7 +8,167 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="BookPage">
 
-    <Grid>
-        
-    </Grid>
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid Margin="24">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Button Grid.Row="0" Content="← Назад"
+                    HorizontalAlignment="Left"
+                    Click="BtnBack_Click"
+                    Margin="0,0,0,16" Padding="10,6"/>
+
+            <Grid Grid.Row="1" Margin="0,0,0,20">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="160"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Column="0" Background="#D5E8F5"
+                        Width="150" Height="200"
+                        CornerRadius="8" ClipToBounds="True">
+                    <Image x:Name="ImgCover" Stretch="UniformToFill"/>
+                </Border>
+
+                <StackPanel Grid.Column="1" Margin="20,0,0,0">
+                    <TextBlock x:Name="TxtTitle" FontSize="22"
+                               FontWeight="Bold" TextWrapping="Wrap"
+                               Margin="0,0,0,8"/>
+                    <TextBlock x:Name="TxtAuthor"
+                               Foreground="Gray" Margin="0,0,0,6"/>
+                    <TextBlock x:Name="TxtGenres"
+                               Foreground="Gray" Margin="0,0,0,6"/>
+                    <TextBlock x:Name="TxtRating"
+                               FontSize="15" Margin="0,0,0,12"/>
+                    <TextBlock x:Name="TxtDescription"
+                               TextWrapping="Wrap" Margin="0,0,0,16"/>
+
+                    <WrapPanel>
+                        <ComboBox x:Name="CmbAddToList" Width="160"
+                                  Margin="0,0,8,8" Padding="6">
+                            <ComboBoxItem Content="Добавить в список"/>
+                            <ComboBoxItem Content="В планах"/>
+                            <ComboBoxItem Content="Читаю"/>
+                            <ComboBoxItem Content="Прочитано"/>
+                            <ComboBoxItem Content="Заброшено"/>
+                        </ComboBox>
+                        <Button Content="Добавить" Padding="10,6"
+                                Margin="0,0,8,8"
+                                Click="BtnAddToList_Click"/>
+                        <Button Content="Пожаловаться" Padding="10,6"
+                                Margin="0,0,8,8" Foreground="Red"
+                                Click="BtnComplain_Click"/>
+                        <Button x:Name="BtnFreeze" Padding="10,6"
+                                Margin="0,0,8,8" Foreground="White"
+                                Background="#E74C3C"
+                                Visibility="Collapsed"
+                                Click="BtnFreeze_Click"/>
+                    </WrapPanel>
+                </StackPanel>
+            </Grid>
+
+            <Expander Grid.Row="2" Header="Читать книгу"
+                      Margin="0,0,0,20">
+                <Border Background="White" Padding="16"
+                        CornerRadius="6" Margin="0,8,0,0">
+                    <TextBlock x:Name="TxtContent"
+                               TextWrapping="Wrap" FontSize="14"
+                               LineHeight="22"/>
+                </Border>
+            </Expander>
+
+            <StackPanel Grid.Row="3">
+                <TextBlock Text="Отзывы" FontSize="18"
+                           FontWeight="Bold" Margin="0,0,0,12"/>
+
+                <Border Background="White" Padding="16"
+                        CornerRadius="8" Margin="0,0,0,12">
+                    <StackPanel>
+                        <TextBlock Text="Ваш отзыв" Margin="0,0,0,6"/>
+                        <TextBox x:Name="TxtReviewText" Height="70"
+                                 TextWrapping="Wrap" Padding="8"
+                                 AcceptsReturn="True"
+                                 Margin="0,0,0,10"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0"
+                                        Orientation="Horizontal">
+                                <TextBlock Text="Оценка (1-10):"
+                                           VerticalAlignment="Center"
+                                           Margin="0,0,8,0"/>
+                                <TextBox x:Name="TxtRatingInput"
+                                         Width="50" Padding="6"
+                                         Text="10"/>
+                            </StackPanel>
+                            <Button Grid.Column="2"
+                                    Content="Оставить отзыв"
+                                    Padding="12,6"
+                                    Click="BtnAddReview_Click"
+                                    Background="#27AE60"
+                                    Foreground="White"/>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+
+                <ItemsControl x:Name="ReviewsList">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border Background="White" Padding="14"
+                                    CornerRadius="8" Margin="0,0,0,8">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid Grid.Row="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0"
+                                                   Text="{Binding UserLogin}"
+                                                   FontWeight="Bold"/>
+                                        <TextBlock Grid.Column="1"
+                                                   Margin="0,0,12,0">
+                                            <Run Text="⭐ "/>
+                                            <Run Text="{Binding Rating}"/>
+                                        </TextBlock>
+                                        <Button Grid.Column="2"
+                                                Content="Жалоба"
+                                                Padding="6,2"
+                                                Foreground="Red"
+                                                Tag="{Binding ReviewId}"
+                                                Click="BtnComplainReview_Click"/>
+                                    </Grid>
+                                    <TextBlock Grid.Row="1"
+                                               Text="{Binding ReviewText}"
+                                               TextWrapping="Wrap"
+                                               Margin="0,6,0,6"/>
+                                    <Button Grid.Row="2"
+                                            Content="Заморозить отзыв"
+                                            Padding="6,2"
+                                            Foreground="White"
+                                            Background="#E74C3C"
+                                            HorizontalAlignment="Left"
+                                            Tag="{Binding ReviewId}"
+                                            Click="BtnFreezeReview_Click"
+                                            Visibility="{Binding FreezeVisible}"/>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
 </Page>

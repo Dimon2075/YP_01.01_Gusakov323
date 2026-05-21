@@ -14,8 +14,8 @@ namespace УП_01._01_Gusakov323
     
     public partial class RoleRequests
     {
-        public int ID { get; set; }
-        public int UserID { get; set; }
+        public int RoleRequestid { get; set; }
+        public int UserId { get; set; }
         public string Status { get; set; }
         public System.DateTime CreatedAt { get; set; }
     

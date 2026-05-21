@@ -8,7 +8,72 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ProfilePage">
 
-    <Grid>
-        
-    </Grid>
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="24">
+
+            <TextBlock Text="Профиль" FontSize="22"
+                       FontWeight="Bold" Margin="0,0,0,20"/>
+
+            <Border Background="White" Padding="20"
+                    CornerRadius="8" Margin="0,0,0,16">
+                <StackPanel>
+                    <TextBlock Text="Информация об аккаунте"
+                               FontSize="16" FontWeight="Bold"
+                               Margin="0,0,0,12"/>
+
+                    <TextBlock x:Name="TxtName" Margin="0,0,0,6"/>
+                    <TextBlock x:Name="TxtLogin" Margin="0,0,0,6"/>
+                    <TextBlock x:Name="TxtEmail" Margin="0,0,0,6"/>
+                    <TextBlock x:Name="TxtRole" Margin="0,0,0,16"/>
+
+                    <Button x:Name="BtnRequestAuthor"
+                            Content="Подать заявку на роль Автора"
+                            Padding="12,8" HorizontalAlignment="Left"
+                            Click="BtnRequestAuthor_Click"
+                            Visibility="Collapsed"/>
+                </StackPanel>
+            </Border>
+
+            <Border x:Name="FreezePanel" Background="#FDECEA"
+                    BorderBrush="#E74C3C" BorderThickness="1"
+                    CornerRadius="8" Padding="16"
+                    Margin="0,0,0,16"
+                    Visibility="Collapsed">
+                <StackPanel>
+                    <TextBlock Text="Ваш аккаунт заморожен"
+                               FontWeight="Bold" Foreground="#C0392B"
+                               Margin="0,0,0,8"/>
+                    <Button Content="Оспорить заморозку"
+                            Padding="10,6" HorizontalAlignment="Left"
+                            Click="BtnUnfreeze_Click"
+                            Foreground="White" Background="#E74C3C"/>
+                </StackPanel>
+            </Border>
+
+            <TextBlock Text="Мои отзывы" FontSize="16"
+                       FontWeight="Bold" Margin="0,0,0,12"/>
+
+            <ItemsControl x:Name="ReviewsList">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border Background="White" Padding="14"
+                                CornerRadius="8" Margin="0,0,0,8">
+                            <StackPanel>
+                                <TextBlock Text="{Binding BookTitle}"
+                                           FontWeight="Bold"
+                                           Margin="0,0,0,4"/>
+                                <TextBlock>
+                                     <Run Text="{Binding Rating, Mode=OneWay}"/>
+                                </TextBlock>
+                                <TextBlock Text="{Binding ReviewText}"
+                                           TextWrapping="Wrap"
+                                           Margin="0,4,0,0"
+                                           Foreground="Gray"/>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
+    </ScrollViewer>
 </Page>

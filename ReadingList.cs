@@ -14,9 +14,9 @@ namespace УП_01._01_Gusakov323
     
     public partial class ReadingList
     {
-        public int ID { get; set; }
-        public int UserID { get; set; }
-        public int BookID { get; set; }
+        public int ReadingListId { get; set; }
+        public int UserId { get; set; }
+        public int BookId { get; set; }
         public string Section { get; set; }
         public System.DateTime AddedAt { get; set; }
     

@@ -20,7 +20,7 @@ namespace УП_01._01_Gusakov323
             this.Users = new HashSet<Users>();
         }
     
-        public int ID { get; set; }
+        public int RoleId { get; set; }
         public string RoleName { get; set; }
         public string Description { get; set; }
     

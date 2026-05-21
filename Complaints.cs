@@ -14,10 +14,10 @@ namespace УП_01._01_Gusakov323
     
     public partial class Complaints
     {
-        public int ID { get; set; }
-        public int UserID { get; set; }
-        public Nullable<int> BookID { get; set; }
-        public Nullable<int> ReviewID { get; set; }
+        public int ComplaintId { get; set; }
+        public int UserId { get; set; }
+        public Nullable<int> BookId { get; set; }
+        public Nullable<int> ReviewId { get; set; }
         public string Reason { get; set; }
         public System.DateTime CreatedAt { get; set; }
     

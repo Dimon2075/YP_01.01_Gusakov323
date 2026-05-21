@@ -8,7 +8,71 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="AuthorPage">
 
-    <Grid>
-        
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Margin="0,0,0,16">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Text="Мои книги"
+                       FontSize="22" FontWeight="Bold"/>
+            <Button Grid.Column="1" Content="+ Добавить книгу"
+                    Padding="12,8" Click="BtnAddBook_Click"
+                    Background="#27AE60" Foreground="White"/>
+        </Grid>
+
+        <WrapPanel Grid.Row="1" Margin="0,0,0,16">
+            <Button Content="Опубликованные" Margin="0,0,8,0"
+                    Padding="12,6" Click="BtnShowActive_Click"/>
+            <Button Content="Замороженные"
+                    Padding="12,6" Click="BtnShowFrozen_Click"/>
+        </WrapPanel>
+
+        <ScrollViewer Grid.Row="2"
+                      VerticalScrollBarVisibility="Auto">
+            <ItemsControl x:Name="BooksList">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border Background="White" Padding="16"
+                                CornerRadius="8" Margin="0,0,0,10">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0">
+                                    <TextBlock Text="{Binding Title}"
+                                               FontWeight="Bold"
+                                               FontSize="15"/>
+                                    <TextBlock Text="{Binding Description}"
+                                               TextWrapping="Wrap"
+                                               Foreground="Gray"
+                                               MaxHeight="40"
+                                               Margin="0,4,0,0"/>
+                                </StackPanel>
+                                <StackPanel Grid.Column="1"
+                                            Orientation="Horizontal">
+                                    <Button Content="Редактировать"
+                                            Padding="10,6" Margin="0,0,8,0"
+                                            Tag="{Binding Books.ID}"
+                                            Click="BtnEdit_Click"/>
+                                    <Button Content="Оспорить"
+                                            Padding="10,6"
+                                            Tag="{Binding Books.ID}"
+                                            Click="BtnAppeal_Click"
+                                            Visibility="{Binding AppealVisible}"/>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
     </Grid>
 </Page>

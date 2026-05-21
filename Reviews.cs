@@ -20,9 +20,9 @@ namespace УП_01._01_Gusakov323
             this.Complaints = new HashSet<Complaints>();
         }
     
-        public int ID { get; set; }
-        public int BookID { get; set; }
-        public int UserID { get; set; }
+        public int ReviewId { get; set; }
+        public int BookId { get; set; }
+        public int UserId { get; set; }
         public string ReviewText { get; set; }
         public int Rating { get; set; }
         public System.DateTime CreatedAt { get; set; }

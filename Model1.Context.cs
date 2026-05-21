@@ -13,10 +13,10 @@ namespace УП_01._01_Gusakov323
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class ReadWriteNoSleepEntities : DbContext
+    public partial class ReadWriteNoSleepEntities1 : DbContext
     {
-        public ReadWriteNoSleepEntities()
-            : base("name=ReadWriteNoSleepEntities")
+        public ReadWriteNoSleepEntities1()
+            : base("name=ReadWriteNoSleepEntities1")
         {
         }
     

@@ -7,18 +7,18 @@
       <Schema Namespace="Хранилище ReadWriteNoSleepModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="BookGenres">
           <Key>
-            <PropertyRef Name="BookID" />
-            <PropertyRef Name="GenreID" />
+            <PropertyRef Name="BookId" />
+            <PropertyRef Name="GenreId" />
           </Key>
-          <Property Name="BookID" Type="int" Nullable="false" />
-          <Property Name="GenreID" Type="int" Nullable="false" />
+          <Property Name="BookId" Type="int" Nullable="false" />
+          <Property Name="GenreId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Books">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="BookId" />
           </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="AuthorID" Type="int" Nullable="false" />
+          <Property Name="BookId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AuthorId" Type="int" Nullable="false" />
           <Property Name="Title" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="Description" Type="nvarchar(max)" />
           <Property Name="CoverPath" Type="nvarchar" MaxLength="500" />
@@ -28,58 +28,58 @@
         </EntityType>
         <EntityType Name="Complaints">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="ComplaintId" />
           </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="UserID" Type="int" Nullable="false" />
-          <Property Name="BookID" Type="int" />
-          <Property Name="ReviewID" Type="int" />
+          <Property Name="ComplaintId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="BookId" Type="int" />
+          <Property Name="ReviewId" Type="int" />
           <Property Name="Reason" Type="nvarchar(max)" Nullable="false" />
           <Property Name="CreatedAt" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Genres">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="GenreId" />
           </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GenreId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Description" Type="nvarchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="ReadingList">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="ReadingListId" />
           </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="UserID" Type="int" Nullable="false" />
-          <Property Name="BookID" Type="int" Nullable="false" />
+          <Property Name="ReadingListId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="BookId" Type="int" Nullable="false" />
           <Property Name="Section" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="AddedAt" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Reviews">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="ReviewId" />
           </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="BookID" Type="int" Nullable="false" />
-          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="ReviewId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BookId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="ReviewText" Type="nvarchar(max)" />
           <Property Name="Rating" Type="int" Nullable="false" />
           <Property Name="CreatedAt" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="RoleRequests">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="RoleRequestid" />
           </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="RoleRequestid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="Status" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="CreatedAt" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Roles">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="RoleId" />
           </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="RoleName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Description" Type="nvarchar" MaxLength="255" />
         </EntityType>
@@ -95,11 +95,11 @@
         </EntityType>
         <EntityType Name="UnfreezeRequest">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="UnfreezeRequestId" />
           </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="UserID" Type="int" Nullable="false" />
-          <Property Name="TargetBookID" Type="int" />
+          <Property Name="UnfreezeRequestId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="TargetBookId" Type="int" />
           <Property Name="Status" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Reason" Type="nvarchar(max)" Nullable="false" />
           <Property Name="CreatedAt" Type="datetime" Nullable="false" />
@@ -108,10 +108,10 @@
         </EntityType>
         <EntityType Name="Users">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="UserId" />
           </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="RoleID" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
           <Property Name="Login" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="PasswordHash" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
@@ -124,10 +124,10 @@
           <End Role="Users" Type="Self.Users" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Roles">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="RoleId" />
             </Principal>
             <Dependent Role="Users">
-              <PropertyRef Name="RoleID" />
+              <PropertyRef Name="RoleId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -136,10 +136,10 @@
           <End Role="Books" Type="Self.Books" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Users">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="UserId" />
             </Principal>
             <Dependent Role="Books">
-              <PropertyRef Name="AuthorID" />
+              <PropertyRef Name="AuthorId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -148,10 +148,10 @@
           <End Role="BookGenres" Type="Self.BookGenres" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Genres">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="GenreId" />
             </Principal>
             <Dependent Role="BookGenres">
-              <PropertyRef Name="GenreID" />
+              <PropertyRef Name="GenreId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -160,10 +160,10 @@
           <End Role="Complaints" Type="Self.Complaints" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Reviews">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="ReviewId" />
             </Principal>
             <Dependent Role="Complaints">
-              <PropertyRef Name="ReviewID" />
+              <PropertyRef Name="ReviewId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -172,10 +172,10 @@
           <End Role="Complaints" Type="Self.Complaints" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Users">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="UserId" />
             </Principal>
             <Dependent Role="Complaints">
-              <PropertyRef Name="UserID" />
+              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -184,10 +184,10 @@
           <End Role="ReadingList" Type="Self.ReadingList" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Users">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="UserId" />
             </Principal>
             <Dependent Role="ReadingList">
-              <PropertyRef Name="UserID" />
+              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -196,10 +196,10 @@
           <End Role="Reviews" Type="Self.Reviews" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Users">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="UserId" />
             </Principal>
             <Dependent Role="Reviews">
-              <PropertyRef Name="UserID" />
+              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -208,10 +208,10 @@
           <End Role="RoleRequests" Type="Self.RoleRequests" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Users">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="UserId" />
             </Principal>
             <Dependent Role="RoleRequests">
-              <PropertyRef Name="UserID" />
+              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -220,10 +220,10 @@
           <End Role="UnfreezeRequest" Type="Self.UnfreezeRequest" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Users">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="UserId" />
             </Principal>
             <Dependent Role="UnfreezeRequest">
-              <PropertyRef Name="UserID" />
+              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -232,10 +232,10 @@
           <End Role="BookGenres" Type="Self.BookGenres" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Books">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="BookId" />
             </Principal>
             <Dependent Role="BookGenres">
-              <PropertyRef Name="BookID" />
+              <PropertyRef Name="BookId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -244,10 +244,10 @@
           <End Role="Complaints" Type="Self.Complaints" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Books">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="BookId" />
             </Principal>
             <Dependent Role="Complaints">
-              <PropertyRef Name="BookID" />
+              <PropertyRef Name="BookId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -256,10 +256,10 @@
           <End Role="ReadingList" Type="Self.ReadingList" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Books">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="BookId" />
             </Principal>
             <Dependent Role="ReadingList">
-              <PropertyRef Name="BookID" />
+              <PropertyRef Name="BookId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -268,10 +268,10 @@
           <End Role="Reviews" Type="Self.Reviews" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Books">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="BookId" />
             </Principal>
             <Dependent Role="Reviews">
-              <PropertyRef Name="BookID" />
+              <PropertyRef Name="BookId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -280,10 +280,10 @@
           <End Role="UnfreezeRequest" Type="Self.UnfreezeRequest" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Books">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="BookId" />
             </Principal>
             <Dependent Role="UnfreezeRequest">
-              <PropertyRef Name="TargetBookID" />
+              <PropertyRef Name="TargetBookId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -363,10 +363,10 @@
       <Schema Namespace="ReadWriteNoSleepModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Books">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="BookId" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="AuthorID" Type="Int32" Nullable="false" />
+          <Property Name="BookId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AuthorId" Type="Int32" Nullable="false" />
           <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="CoverPath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
@@ -382,12 +382,12 @@
         </EntityType>
         <EntityType Name="Complaints">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="ComplaintId" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserID" Type="Int32" Nullable="false" />
-          <Property Name="BookID" Type="Int32" />
-          <Property Name="ReviewID" Type="Int32" />
+          <Property Name="ComplaintId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="BookId" Type="Int32" />
+          <Property Name="ReviewId" Type="Int32" />
           <Property Name="Reason" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Books" Relationship="Self.FK_Complaints_Books" FromRole="Complaints" ToRole="Books" />
@@ -396,20 +396,20 @@
         </EntityType>
         <EntityType Name="Genres">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="GenreId" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GenreId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Books" Relationship="Self.BookGenres" FromRole="Genres" ToRole="Books" />
         </EntityType>
         <EntityType Name="ReadingList">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="ReadingListId" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserID" Type="Int32" Nullable="false" />
-          <Property Name="BookID" Type="Int32" Nullable="false" />
+          <Property Name="ReadingListId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="BookId" Type="Int32" Nullable="false" />
           <Property Name="Section" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="AddedAt" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Books" Relationship="Self.FK_ReadingList_Books" FromRole="ReadingList" ToRole="Books" />
@@ -417,11 +417,11 @@
         </EntityType>
         <EntityType Name="Reviews">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="ReviewId" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="BookID" Type="Int32" Nullable="false" />
-          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="ReviewId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BookId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
           <Property Name="ReviewText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Rating" Type="Int32" Nullable="false" />
           <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
@@ -431,19 +431,19 @@
         </EntityType>
         <EntityType Name="RoleRequests">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="RoleRequestid" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="RoleRequestid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Users" Relationship="Self.FK__RoleReque__UserI__5AEE82B9" FromRole="RoleRequests" ToRole="Users" />
         </EntityType>
         <EntityType Name="Roles">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="RoleId" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Users" Relationship="Self.FK__AppUser__RoleId__3C69FB99" FromRole="Roles" ToRole="Users" />
@@ -460,11 +460,11 @@
         </EntityType>
         <EntityType Name="UnfreezeRequest">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="UnfreezeRequestId" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserID" Type="Int32" Nullable="false" />
-          <Property Name="TargetBookID" Type="Int32" />
+          <Property Name="UnfreezeRequestId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="TargetBookId" Type="Int32" />
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Reason" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
@@ -475,10 +475,10 @@
         </EntityType>
         <EntityType Name="Users">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="UserId" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="RoleID" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
           <Property Name="Login" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="PasswordHash" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
@@ -498,10 +498,10 @@
           <End Role="Books" Type="Self.Books" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Users">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="UserId" />
             </Principal>
             <Dependent Role="Books">
-              <PropertyRef Name="AuthorID" />
+              <PropertyRef Name="AuthorId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -510,10 +510,10 @@
           <End Role="Complaints" Type="Self.Complaints" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Books">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="BookId" />
             </Principal>
             <Dependent Role="Complaints">
-              <PropertyRef Name="BookID" />
+              <PropertyRef Name="BookId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -522,10 +522,10 @@
           <End Role="ReadingList" Type="Self.ReadingList" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Books">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="BookId" />
             </Principal>
             <Dependent Role="ReadingList">
-              <PropertyRef Name="BookID" />
+              <PropertyRef Name="BookId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -534,10 +534,10 @@
           <End Role="Reviews" Type="Self.Reviews" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Books">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="BookId" />
             </Principal>
             <Dependent Role="Reviews">
-              <PropertyRef Name="BookID" />
+              <PropertyRef Name="BookId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -546,10 +546,10 @@
           <End Role="UnfreezeRequest" Type="Self.UnfreezeRequest" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Books">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="BookId" />
             </Principal>
             <Dependent Role="UnfreezeRequest">
-              <PropertyRef Name="TargetBookID" />
+              <PropertyRef Name="TargetBookId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -558,10 +558,10 @@
           <End Role="Complaints" Type="Self.Complaints" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Reviews">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="ReviewId" />
             </Principal>
             <Dependent Role="Complaints">
-              <PropertyRef Name="ReviewID" />
+              <PropertyRef Name="ReviewId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -570,10 +570,10 @@
           <End Role="Complaints" Type="Self.Complaints" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Users">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="UserId" />
             </Principal>
             <Dependent Role="Complaints">
-              <PropertyRef Name="UserID" />
+              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -582,10 +582,10 @@
           <End Role="ReadingList" Type="Self.ReadingList" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Users">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="UserId" />
             </Principal>
             <Dependent Role="ReadingList">
-              <PropertyRef Name="UserID" />
+              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -594,10 +594,10 @@
           <End Role="Reviews" Type="Self.Reviews" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Users">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="UserId" />
             </Principal>
             <Dependent Role="Reviews">
-              <PropertyRef Name="UserID" />
+              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -606,10 +606,10 @@
           <End Role="RoleRequests" Type="Self.RoleRequests" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Users">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="UserId" />
             </Principal>
             <Dependent Role="RoleRequests">
-              <PropertyRef Name="UserID" />
+              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -618,10 +618,10 @@
           <End Role="Users" Type="Self.Users" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Roles">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="RoleId" />
             </Principal>
             <Dependent Role="Users">
-              <PropertyRef Name="RoleID" />
+              <PropertyRef Name="RoleId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -630,10 +630,10 @@
           <End Role="UnfreezeRequest" Type="Self.UnfreezeRequest" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Users">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="UserId" />
             </Principal>
             <Dependent Role="UnfreezeRequest">
-              <PropertyRef Name="UserID" />
+              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -641,7 +641,7 @@
           <End Role="Genres" Type="Self.Genres" Multiplicity="*" />
           <End Role="Books" Type="Self.Books" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="ReadWriteNoSleepEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="ReadWriteNoSleepEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Books" EntityType="Self.Books" />
           <EntitySet Name="Complaints" EntityType="Self.Complaints" />
           <EntitySet Name="Genres" EntityType="Self.Genres" />
@@ -710,12 +710,12 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище ReadWriteNoSleepModelContainer" CdmEntityContainer="ReadWriteNoSleepEntities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ReadWriteNoSleepModelContainer" CdmEntityContainer="ReadWriteNoSleepEntities1">
           <EntitySetMapping Name="Books">
             <EntityTypeMapping TypeName="ReadWriteNoSleepModel.Books">
               <MappingFragment StoreEntitySet="Books">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="AuthorID" ColumnName="AuthorID" />
+                <ScalarProperty Name="BookId" ColumnName="BookId" />
+                <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="CoverPath" ColumnName="CoverPath" />
@@ -728,10 +728,10 @@
           <EntitySetMapping Name="Complaints">
             <EntityTypeMapping TypeName="ReadWriteNoSleepModel.Complaints">
               <MappingFragment StoreEntitySet="Complaints">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
-                <ScalarProperty Name="BookID" ColumnName="BookID" />
-                <ScalarProperty Name="ReviewID" ColumnName="ReviewID" />
+                <ScalarProperty Name="ComplaintId" ColumnName="ComplaintId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="BookId" ColumnName="BookId" />
+                <ScalarProperty Name="ReviewId" ColumnName="ReviewId" />
                 <ScalarProperty Name="Reason" ColumnName="Reason" />
                 <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
               </MappingFragment>
@@ -740,7 +740,7 @@
           <EntitySetMapping Name="Genres">
             <EntityTypeMapping TypeName="ReadWriteNoSleepModel.Genres">
               <MappingFragment StoreEntitySet="Genres">
-                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="GenreId" ColumnName="GenreId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
               </MappingFragment>
@@ -749,9 +749,9 @@
           <EntitySetMapping Name="ReadingList">
             <EntityTypeMapping TypeName="ReadWriteNoSleepModel.ReadingList">
               <MappingFragment StoreEntitySet="ReadingList">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
-                <ScalarProperty Name="BookID" ColumnName="BookID" />
+                <ScalarProperty Name="ReadingListId" ColumnName="ReadingListId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="BookId" ColumnName="BookId" />
                 <ScalarProperty Name="Section" ColumnName="Section" />
                 <ScalarProperty Name="AddedAt" ColumnName="AddedAt" />
               </MappingFragment>
@@ -760,9 +760,9 @@
           <EntitySetMapping Name="Reviews">
             <EntityTypeMapping TypeName="ReadWriteNoSleepModel.Reviews">
               <MappingFragment StoreEntitySet="Reviews">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="BookID" ColumnName="BookID" />
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ReviewId" ColumnName="ReviewId" />
+                <ScalarProperty Name="BookId" ColumnName="BookId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="ReviewText" ColumnName="ReviewText" />
                 <ScalarProperty Name="Rating" ColumnName="Rating" />
                 <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
@@ -772,8 +772,8 @@
           <EntitySetMapping Name="RoleRequests">
             <EntityTypeMapping TypeName="ReadWriteNoSleepModel.RoleRequests">
               <MappingFragment StoreEntitySet="RoleRequests">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="RoleRequestid" ColumnName="RoleRequestid" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
               </MappingFragment>
@@ -782,7 +782,7 @@
           <EntitySetMapping Name="Roles">
             <EntityTypeMapping TypeName="ReadWriteNoSleepModel.Roles">
               <MappingFragment StoreEntitySet="Roles">
-                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
                 <ScalarProperty Name="RoleName" ColumnName="RoleName" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
               </MappingFragment>
@@ -802,9 +802,9 @@
           <EntitySetMapping Name="UnfreezeRequest">
             <EntityTypeMapping TypeName="ReadWriteNoSleepModel.UnfreezeRequest">
               <MappingFragment StoreEntitySet="UnfreezeRequest">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
-                <ScalarProperty Name="TargetBookID" ColumnName="TargetBookID" />
+                <ScalarProperty Name="UnfreezeRequestId" ColumnName="UnfreezeRequestId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="TargetBookId" ColumnName="TargetBookId" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="Reason" ColumnName="Reason" />
                 <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
@@ -816,8 +816,8 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="ReadWriteNoSleepModel.Users">
               <MappingFragment StoreEntitySet="Users">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
                 <ScalarProperty Name="Login" ColumnName="Login" />
                 <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
@@ -829,10 +829,10 @@
           </EntitySetMapping>
           <AssociationSetMapping Name="BookGenres" TypeName="ReadWriteNoSleepModel.BookGenres" StoreEntitySet="BookGenres">
             <EndProperty Name="Genres">
-              <ScalarProperty Name="ID" ColumnName="GenreID" />
+              <ScalarProperty Name="GenreId" ColumnName="GenreId" />
             </EndProperty>
             <EndProperty Name="Books">
-              <ScalarProperty Name="ID" ColumnName="BookID" />
+              <ScalarProperty Name="BookId" ColumnName="BookId" />
             </EndProperty>
           </AssociationSetMapping>
         </EntityContainerMapping>

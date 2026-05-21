@@ -7,6 +7,56 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0" Background="#2C3E50">
+
+            <Border Padding="16,20" BorderBrush="#3D5166"
+                    BorderThickness="0,0,0,1">
+                <StackPanel>
+                    <TextBlock x:Name="TxtUserName"
+                               Foreground="White" FontWeight="Bold"
+                               FontSize="14" TextWrapping="Wrap"/>
+                    <TextBlock x:Name="TxtUserRole"
+                               Foreground="#BDC3C7" FontSize="12"
+                               Margin="0,4,0,0"/>
+                </StackPanel>
+            </Border>
+
+            <Button x:Name="BtnCatalog" Content="Каталог книг"
+                    Click="BtnCatalog_Click"/>
+
+            <Button x:Name="BtnMyList" Content="Мои списки"
+                    Click="BtnMyList_Click"/>
+
+            <Button x:Name="BtnProfile" Content="Профиль"
+                    Click="BtnProfile_Click"/>
+
+            <Button x:Name="BtnAuthor" Content="Мои книги"
+                    Click="BtnAuthor_Click" 
+                    Visibility="Collapsed"/>
+
+            <Button x:Name="BtnAdmin" Content="Администрирование"
+                    Click="BtnAdmin_Click" 
+                    Visibility="Collapsed"/>
+
+            <Border x:Name="FreezeWarning" Background="#C0392B"
+                    Padding="12,10" Margin="8,8,8,0"
+                    CornerRadius="6" Visibility="Collapsed">
+                <TextBlock Text="Ваш аккаунт заморожен"
+                           Foreground="White" FontSize="12"
+                           TextWrapping="Wrap"/>
+            </Border>
+
+            <Button Content="Выйти" Click="BtnLogout_Click"
+                    Margin="0,20,0,0" Foreground="#E74C3C"/>
+        </StackPanel>
+
+        <Frame x:Name="MainFrame" Grid.Column="1"
+               NavigationUIVisibility="Hidden"
+               Background="#F0F0F0"/>
     </Grid>
 </Window>

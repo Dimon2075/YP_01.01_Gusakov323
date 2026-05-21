@@ -14,9 +14,9 @@ namespace УП_01._01_Gusakov323
     
     public partial class UnfreezeRequest
     {
-        public int ID { get; set; }
-        public int UserID { get; set; }
-        public Nullable<int> TargetBookID { get; set; }
+        public int UnfreezeRequestId { get; set; }
+        public int UserId { get; set; }
+        public Nullable<int> TargetBookId { get; set; }
         public string Status { get; set; }
         public string Reason { get; set; }
         public System.DateTime CreatedAt { get; set; }

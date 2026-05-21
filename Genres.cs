@@ -20,7 +20,7 @@ namespace УП_01._01_Gusakov323
             this.Books = new HashSet<Books>();
         }
     
-        public int ID { get; set; }
+        public int GenreId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
     

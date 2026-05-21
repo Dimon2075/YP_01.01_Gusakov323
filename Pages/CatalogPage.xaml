@@ -8,7 +8,90 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="CatalogPage">
 
-    <Grid>
-        
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="Каталог книг"
+                   FontSize="22" FontWeight="Bold"
+                   Margin="0,0,0,16"/>
+
+        <Grid Grid.Row="1" Margin="0,0,0,16">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="160"/>
+                <ColumnDefinition Width="160"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBox x:Name="TxtSearch" Grid.Column="0"
+                     Padding="8,6" Margin="0,0,8,0"
+                     Text="Поиск по названию или автору..."
+                     Foreground="Gray"
+                     GotFocus="TxtSearch_GotFocus"
+                     LostFocus="TxtSearch_LostFocus"
+                     TextChanged="TxtSearch_TextChanged"/>
+
+            <ComboBox x:Name="CmbGenre" Grid.Column="1"
+                      Padding="8,6" Margin="0,0,8,0"
+                      SelectionChanged="CmbGenre_SelectionChanged"/>
+
+            <ComboBox x:Name="CmbSort" Grid.Column="2"
+                      Padding="8,6" Margin="0,0,8,0"
+                      SelectionChanged="CmbSort_SelectionChanged">
+                <ComboBoxItem Content="По названию" IsSelected="True"/>
+                <ComboBoxItem Content="По рейтингу"/>
+            </ComboBox>
+
+            <Button Grid.Column="3" Content="Сбросить"
+                    Padding="8,6" Click="BtnReset_Click"/>
+        </Grid>
+
+        <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
+            <ItemsControl x:Name="BooksPanel">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border Width="180" Margin="8"
+                                Background="White" CornerRadius="8"
+                                Padding="12" Cursor="Hand"
+                                MouseLeftButtonUp="BookCard_Click">
+                            <Border.Effect>
+                                <DropShadowEffect BlurRadius="8"
+                                                  Opacity="0.1"
+                                                  ShadowDepth="2"/>
+                            </Border.Effect>
+                            <StackPanel>
+                                <Border Background="#D5E8F5" Height="120"
+                                    CornerRadius="6" Margin="0,0,0,10"
+                                                ClipToBounds="True">
+                                    <Image Source="{Binding CoverPath}"
+                                        Stretch="UniformToFill"/>
+                                </Border>
+                                <TextBlock Text="{Binding Title}"
+                                           FontWeight="Bold" FontSize="13"
+                                           TextWrapping="Wrap"
+                                           MaxHeight="40"/>
+                                <TextBlock Text="{Binding DisplayName}"
+                                           Foreground="Gray" FontSize="11"
+                                           Margin="0,4,0,0"/>
+                                <TextBlock FontSize="12" Margin="0,4,0,0">
+                                    <Run Text="⭐ "/>
+                                    <Run Text="{Binding AvgRating,
+                                         StringFormat={}{0:F1}}"/>
+                                </TextBlock>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
     </Grid>
 </Page>

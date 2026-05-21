@@ -24,8 +24,8 @@ namespace УП_01._01_Gusakov323
             this.Genres = new HashSet<Genres>();
         }
     
-        public int ID { get; set; }
-        public int AuthorID { get; set; }
+        public int BookId { get; set; }
+        public int AuthorId { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public string CoverPath { get; set; }
