@@ -60,11 +60,11 @@
                                             Orientation="Horizontal">
                                     <Button Content="Редактировать"
                                             Padding="10,6" Margin="0,0,8,0"
-                                            Tag="{Binding Books.ID}"
+                                            Tag="{Binding BookId}"
                                             Click="BtnEdit_Click"/>
                                     <Button Content="Оспорить"
                                             Padding="10,6"
-                                            Tag="{Binding Books.ID}"
+                                            Tag="{Binding BookId}"
                                             Click="BtnAppeal_Click"
                                             Visibility="{Binding AppealVisible}"/>
                                 </StackPanel>

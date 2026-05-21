@@ -70,8 +70,15 @@ namespace УП_01._01_Gusakov323.Pages
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
             var btn = sender as Button;
-            int bookId = (int)btn.Tag;
-            NavigationService.Navigate(new AddEditBookPage(bookId));
+
+            if (btn?.Tag != null)
+            {
+                
+                if (int.TryParse(btn.Tag.ToString(), out int bookId))
+                {
+                    NavigationService.Navigate(new AddEditBookPage(bookId));
+                }
+            }
         }
 
         private void BtnAppeal_Click(object sender, RoutedEventArgs e)
