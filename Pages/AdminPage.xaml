@@ -48,9 +48,15 @@
                                             <TextBlock Text="{Binding Target}" Foreground="Gray" Margin="0,4,0,0"/>
                                             <TextBlock Text="{Binding Reason}" Margin="0,4,0,0"/>
                                         </StackPanel>
-                                        <Button Grid.Column="1" Content="Удалить" Padding="8,6"
-                                                Tag="{Binding ComplaintId}"
-                                                Click="BtnDeleteComplaint_Click"/>
+                                        <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                                            <Button Content="Принять" Padding="12,6" Margin="0,0,8,0"
+                    Tag="{Binding ComplaintId}"
+                    Click="BtnAcceptComplaint_Click"/>
+
+                                            <Button Content="Отклонить" Padding="12,6"
+                    Tag="{Binding ComplaintId}"
+                    Click="BtnRejectComplaint_Click"/>
+                                        </StackPanel>
                                     </Grid>
                                 </Border>
                             </DataTemplate>

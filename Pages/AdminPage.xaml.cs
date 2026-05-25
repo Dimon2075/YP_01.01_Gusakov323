@@ -275,6 +275,88 @@ namespace УП_01._01_Gusakov323.Pages
                 MessageBox.Show("Нужно ввести число — ID роли!", "Ошибка",
                                 MessageBoxButton.OK, MessageBoxImage.Error);
             }
+
         }
+        private void BtnAcceptComplaint_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button button && button.Tag is int id)
+            {
+                // 1. Находим текущую жалобу, которую одобрил администратор
+                var complaint = Core.Context.Complaints.FirstOrDefault(x => x.ComplaintId == id);
+                if (complaint != null)
+                {
+                    int? bookIdToDelete = complaint.BookId;
+                    int? reviewIdToDelete = complaint.ReviewId;
+
+                    // Удаляем текущую жалобу сразу, чтобы высвободить контекст
+                    Core.Context.Complaints.Remove(complaint);
+                    Core.Context.SaveChanges();
+
+                    // 2. БЕЗОПАСНО УДАЛЯЕМ КОНТЕНТ И ВСЕ СВЯЗАННЫЕ С НИМ ДРУГИЕ ЖАЛОБЫ
+                    if (bookIdToDelete != null)
+                    {
+                        // А. Удаляем ВСЕ другие жалобы, которые были поданы на отзывы этой книги
+                        Core.Context.Database.ExecuteSqlCommand(
+                            "DELETE FROM Complaints WHERE ReviewId IN (SELECT ReviewId FROM Reviews WHERE BookId = @p0)", bookIdToDelete);
+
+                        // Б. Удаляем ВСЕ другие жалобы, которые были поданы напрямую на саму эту книгу
+                        Core.Context.Database.ExecuteSqlCommand(
+                            "DELETE FROM Complaints WHERE BookId = @p0", bookIdToDelete);
+
+                        // В. Теперь отзывы этой книги полностью свободны от внешних связей — удаляем их
+                        Core.Context.Database.ExecuteSqlCommand(
+                            "DELETE FROM Reviews WHERE BookId = @p0", bookIdToDelete);
+
+                        // Г. Книга полностью изолирована — удаляем её
+                        Core.Context.Database.ExecuteSqlCommand(
+                            "DELETE FROM Books WHERE BookId = @p0", bookIdToDelete);
+                    }
+                    else if (reviewIdToDelete != null)
+                    {
+                        // Если удаляем конкретный ОДИН отзыв:
+                        // А. Сначала удаляем ВСЕ остальные жалобы, которые были поданы на этот же самый отзыв
+                        Core.Context.Database.ExecuteSqlCommand(
+                            "DELETE FROM Complaints WHERE ReviewId = @p0", reviewIdToDelete);
+
+                        // Б. Теперь отзыв ничем не связан — удаляем его
+                        Core.Context.Database.ExecuteSqlCommand(
+                            "DELETE FROM Reviews WHERE ReviewId = @p0", reviewIdToDelete);
+                    }
+
+                    // Полностью сбрасываем кэш контекста Entity Framework
+                    Core.ResetContext();
+
+                    MessageBox.Show("Жалоба успешно принята. Нарушающий контент и связанные дубликаты жалоб удалены.",
+                                    "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                    LoadComplaints(); // Перерисовываем список на экране
+                }
+            }
+        }
+
+
+
+
+        /// <summary>
+        /// Обработчик кнопки "Отклонить" — удаляет только саму жалобу, контент остается
+        /// </summary>
+        private void BtnRejectComplaint_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button button && button.Tag is int id)
+            {
+                var complaint = Core.Context.Complaints.FirstOrDefault(x => x.ComplaintId == id);
+                if (complaint != null)
+                {
+                    // Просто удаляем саму жалобу
+                    Core.Context.Complaints.Remove(complaint);
+                    Core.Context.SaveChanges();
+
+                    MessageBox.Show("Жалоба отклонена.", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+                    LoadComplaints(); // Обновляем список на экране
+                }
+            }
+        }
+
+        
     }
 }
