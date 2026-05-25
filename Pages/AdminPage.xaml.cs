@@ -39,18 +39,25 @@ namespace УП_01._01_Gusakov323.Pages
         private void LoadComplaints()
         {
             Core.ResetContext();
-            var list = Core.Context.Complaints.ToList()
+
+            // Формируем запрос IQueryable. EF Core транслирует этот код в ОДИН оптимизированный SQL-запрос.
+            var list = Core.Context.Complaints
                 .Select(c => new
                 {
                     ComplaintId = c.ComplaintId,
-                    From = "От: " + (c.Users?.Login ?? ""),
+                    // СУБД сама выполнит LEFT JOIN и проверит значение на null (через COALESCE или ISNULL)
+                    From = "От: " + (c.Users.Login ?? ""),
                     Target = c.BookId != null
-                        ? "Книга: " + c.Books?.Title
+                        ? "Книга: " + c.Books.Title
                         : "Отзыв #" + c.ReviewId,
                     Reason = c.Reason
-                }).ToList();
+                })
+                .ToList(); // Вызов .ToList() перенесен в конец. Данные материализуются только после выборки.
+
             ComplaintsList.ItemsSource = list;
         }
+
+        
 
         private void LoadUnfreezeRequests()
         {
@@ -82,14 +89,19 @@ namespace УП_01._01_Gusakov323.Pages
         private void LoadUsers()
         {
             Core.ResetContext();
-            var list = Core.Context.Users.ToList()
+
+            // Рефакторинг метода загрузки пользователей
+            var list = Core.Context.Users
                 .Select(u => new
                 {
                     UserId = u.UserId,
                     Login = u.Login,
-                    RoleName = u.Roles?.RoleName ?? "",
+                    RoleName = u.Roles.RoleName ?? "",
+                    // Тернарный оператор выполнится на стороне СУБД (будет сгенерирован оператор CASE WHEN)
                     FreezeLabel = u.IsFrozen == true ? "Разморозить" : "Заморозить"
-                }).ToList();
+                })
+                .ToList(); // Запрос уходит в БД в оптимизированном виде
+
             UsersList.ItemsSource = list;
         }
 
